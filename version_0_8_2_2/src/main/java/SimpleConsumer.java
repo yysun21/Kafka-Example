@@ -36,19 +36,4 @@ public class SimpleConsumer extends Thread {
             System.out.println(new String(iterator.next().message()));
         }
     }
-
-    public static void processRecords(Map<String, ConsumerRecords<String, String>> records) {
-        List<ConsumerRecord<String, String>> messages = records.get("garnett_kafka_test").records();
-        if(messages != null) {
-            for (ConsumerRecord<String, String> next : messages) {
-                try {
-                    System.out.println(next.value());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        } else {
-            System.out.println("No messages");
-        }
-    }
 }
